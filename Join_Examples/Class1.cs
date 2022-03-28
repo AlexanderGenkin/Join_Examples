@@ -13,12 +13,13 @@ namespace Join_Examples
     {
         public void QueryExpressionExample1(IOrganizationService _service)
         {
+            //Find all leads that have no tasks, using an alias
 
-//SELECT lead.FullName
-//FROM Leads as lead
-//LEFT OUTER JOIN Tasks as ab
-//ON(lead.leadId = ab.RegardingObjectId)
-//WHERE ab.RegardingObjectId is null
+            //SELECT lead.FullName
+            //FROM Leads as lead
+            //LEFT OUTER JOIN Tasks as ab
+            //ON(lead.leadId = ab.RegardingObjectId)
+            //WHERE ab.RegardingObjectId is null
 
 
             QueryExpression qx = new QueryExpression("lead");
@@ -134,7 +135,7 @@ namespace Join_Examples
 
                 var query =
                     from lead in leads
-                    join user in users 
+                    join user in users
                     on lead.CreatedBy.Id equals user.SystemUserId
                     where user.FirstName == "Alexander"
                     && lead.CreatedOn.Value.Month == 8
@@ -153,25 +154,25 @@ namespace Join_Examples
                         lead.CreationDate);
                 }
             }
-//            LINQ Operator   Limitations
-//join    Represents an inner or outer join. Only left outer joins are supported.
-//from Supports one from clause per query.
-//where The left side of the clause must be a column name and the right side of the clause
-//must be a value.You cannot set the left side to a constant.Both the sides of the
-//clause cannot be constants.
+            //            LINQ Operator   Limitations
+            //join    Represents an inner or outer join. Only left outer joins are supported.
+            //from Supports one from clause per query.
+            //where The left side of the clause must be a column name and the right side of the clause
+            //must be a value.You cannot set the left side to a constant.Both the sides of the
+            //clause cannot be constants.
 
-//Supports the String functions Contains, StartsWith, EndsWith, and Equals.
-//groupBy Not supported.FetchXML supports grouping options that are not available with
-//the LINQ query provider.More information: Use FetchXML Aggregation
+            //Supports the String functions Contains, StartsWith, EndsWith, and Equals.
+            //groupBy Not supported.FetchXML supports grouping options that are not available with
+            //the LINQ query provider.More information: Use FetchXML Aggregation
 
-//orderBy Supports ordering by table columns, such as Contact.FullName.
-//select  Supports anonymous types, constructors, and initializers.
-//last The last operator is not supported.
-//skip and take Supports skip and take using server-side paging.The skip value must be greater than
-//or equal to the take value.
-//aggregate Not supported.FetchXML supports aggregation options that
-//are not available with the LINQ query provider.
-//More information: Use FetchXML Aggregation
+            //orderBy Supports ordering by table columns, such as Contact.FullName.
+            //select  Supports anonymous types, constructors, and initializers.
+            //last The last operator is not supported.
+            //skip and take Supports skip and take using server-side paging.The skip value must be greater than
+            //or equal to the take value.
+            //aggregate Not supported.FetchXML supports aggregation options that
+            //are not available with the LINQ query provider.
+            //More information: Use FetchXML Aggregation
 
 
 
@@ -182,9 +183,9 @@ namespace Join_Examples
 
 
 
-//FetchXML Agregation Limitations
-//Queries that return aggregate values are limited to 50,000 records.
-//If the filter criteria in your query includes more than 50,000 records you will get error
+        //FetchXML Agregation Limitations
+        //Queries that return aggregate values are limited to 50,000 records.
+        //If the filter criteria in your query includes more than 50,000 records you will get error
 
 
         public void FetchXMLExample1(IOrganizationService _service)
@@ -199,7 +200,7 @@ namespace Join_Examples
                         <attribute name='name'/>   
                         <link-entity name='systemuser' to='owninguser'>   
                            <filter type='and'>   
-                              <condition attribute='lastname' operator='ne' value='Alexander' />   
+                              <condition attribute='firstname' operator='ne' value='Alexander' />   
                            </filter>   
                         </link-entity>   
                      </entity>   
